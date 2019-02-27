@@ -4,8 +4,13 @@ var Schema = mongoose.Schema;
 var userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
-    email: String,
-    phoneNo: String,
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true,
+    },
+    password: String,
     comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Feedback',
@@ -15,7 +20,8 @@ var userSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Feedback',
         isQuestion: true,
-    }]
+    }],
+    googleId: String,
 }, {
     timestamps: true
 });

@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<h1>Excel Tutorials</h1>
+<br><br>
+<table>
+<thead>
+    <tr>
+        <th>Mastered</th>
+        <th>Tutorial</th>
+    </tr>
+</thead>
+<tbody>
+    <% tutorials.forEach(function(t) { %>
+    <tr>
+        <td><input type="checkbox" name='mastered'><%= t.mastered %></td>
+        <td><a href="/tutorials/<%= t._id %>"><%= t.title %></a></td>
+    </tr>
+    <% }) %>
+</tbody>
+</table>
