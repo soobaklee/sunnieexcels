@@ -25,7 +25,7 @@ router.get('/logout', function(req, res) {
 });
 
 router.get('/about', function(req, res) {
-  res.render('about', { title: 'About Sunnie Excels', user: req.user })
+  res.render('about', { title: 'About SunniExcels', user: req.user })
 })
 
 module.exports = router;

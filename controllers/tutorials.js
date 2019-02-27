@@ -1,5 +1,6 @@
 const Tutorial = require('../models/tutorial');
 const Feedback = require('../models/feedback');
+const User = require('../models/user');
 
 module.exports = {
     index,
@@ -28,23 +29,28 @@ function newTutorial(req, res) {
 
 function show(req, res) {
     Tutorial.findById(req.params.id)
-    .populate('feedback').exec(function(err, tutorial) {
-        console.log(tutorial)
-        Feedback.find({_id: {$nin: tutorial.comments, $nin: tutorial.questions}})
-        .exec(function(err, feedback) { 
-            res.render('tutorials/show', {
-                title: `${tutorial.title}`, 
-                user: req.user,
-                tutorial,
-                feedback
-            });
+        .populate('postedBy')
+        .populate('feedback').exec(function (err, tutorial) {
+            Feedback.find({ _id: { $nin: tutorial.comments, $nin: tutorial.questions } })
+                .exec(function (err, feedback) {
+                    res.render('tutorials/show', {
+                        title: `${tutorial.title}`,
+                        postedBy: tutorial.postedBy,
+                        user: req.user,
+                        tutorial,
+                        feedback
+                    });
+                });
         });
-    });
 }
 
 function create(req, res) {
+    console.log("Req inside of tutorial create", req.body)
     var tutorial = new Tutorial(req.body);
-    tutorial.save(function(err) {
+    tutorial.steps.push({ content: req.body.content, image: req.body.image });
+    console.log("POSTEDBY: ", tutorial)
+    tutorial.postedBy = req.user._id;
+    tutorial.save(function (err) {
         if (err) return res.redirect('/tutorials/new');
         res.redirect(`/tutorials/${tutorial._id}`);
     });

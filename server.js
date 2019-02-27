@@ -34,6 +34,8 @@ const parser = multer({ storage: storage });
 
 var indexRouter = require('./routes/index');
 var tutorialsRouter = require('./routes/tutorials');
+var stepsRouter = require('./routes/steps');
+var feedbacksRouter = require('./routes/feedbacks');
 
 var app = express();
 
@@ -68,6 +70,8 @@ app.post('/api/images', parser.single("image"), (req, res) => {
 
 app.use('/', indexRouter);
 app.use('/tutorials', tutorialsRouter);
+app.use('/', stepsRouter);
+app.use('/', feedbacksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -19,7 +19,7 @@ var tutorialSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    steps: {stepSchema},
+    steps: [stepSchema],
     comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Feedback',

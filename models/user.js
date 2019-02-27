@@ -2,8 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
+    profileName: String,
     email: {
         type: String,
         unique: true,

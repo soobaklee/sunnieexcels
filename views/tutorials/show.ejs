@@ -5,9 +5,20 @@
 <br>
 <br>
 <main id="tutorial">
-
-    <%= steps.content%>
+ 
+ <h4>Posted By: <%= tutorial.postedBy.email%>  on <%= tutorial.createdAt %> </h4>
+<br>
     <br>
-    why is my title the only piece of information i can get
+ <%= tutorial.steps[0].content %>
+
+    <br>
 </p>
+<br>
+<br>
+<br>
+<h2>Feedback (Comments/Questions)</h2>
+<form id="adding-feedback" action="/tutorials/<%= tutorial._id %>/feedback" method="POST">
+
+</form>
+
 </main>
