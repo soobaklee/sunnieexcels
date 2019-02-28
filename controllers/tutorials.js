@@ -1,5 +1,5 @@
 const Tutorial = require('../models/tutorial');
-const Feedback = require('../models/feedback');
+// const Comment = require('../models/comment');
 const User = require('../models/user');
 
 module.exports = {
@@ -8,6 +8,8 @@ module.exports = {
     show,
     create,
     mastered,
+    delete: deleteTutorial,
+    update: updateTutorial,
 }
 
 function index(req, res, next) {
@@ -30,18 +32,15 @@ function newTutorial(req, res) {
 function show(req, res) {
     Tutorial.findById(req.params.id)
         .populate('postedBy')
-        .populate('feedback').exec(function (err, tutorial) {
-            Feedback.find({ _id: { $nin: tutorial.comments, $nin: tutorial.questions } })
-                .exec(function (err, feedback) {
-                    res.render('tutorials/show', {
-                        title: `${tutorial.title}`,
-                        postedBy: tutorial.postedBy,
-                        user: req.user,
-                        tutorial,
-                        feedback
-                    });
-                });
+        .exec(function (err, tutorial) {
+            res.render('tutorials/show', {
+                title: `${tutorial.title}`,
+                postedBy: tutorial.postedBy,
+                user: req.user,
+                tutorial
+            });
         });
+
 }
 
 function create(req, res) {
@@ -60,3 +59,24 @@ function create(req, res) {
 function mastered(req, res) {
     req.body.field = Boolean(req.body.field)
 }
+
+function deleteTutorial(req, res) {
+    Tutorial.findByIdAndRemove(req.params.id, function (err) {
+        res.redirect('/tutorials');
+    });
+}
+
+function updateTutorial(req, res) {
+    Tutorial.findByIdAndUpdate(req.params.id, {
+        content: req.body.content, 
+        image: req.body.image, 
+        title: req.body.title}, {new: true}, function (err, tutorial) {
+        res.render('tutorials/edit', {
+            title: `Edit ${tutorial.title}`,
+            postedBy: tutorial.postedBy,
+            user: req.user,
+            tutorial
+        });
+});
+}
+

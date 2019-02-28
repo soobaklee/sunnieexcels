@@ -11,8 +11,8 @@
 <tbody>
     <% tutorials.forEach(function(t) { %>
     <tr>
-        <td><input type="checkbox" name='mastered'><%= t.mastered %></td>
-        <td><a href="/tutorials/<%= t._id %>"><%= t.title %></a></td>
+        <td><h1><input type="checkbox" name='mastered'><%= t.mastered %></h1></td>
+        <td><h1 class="title"><a href="/tutorials/<%= t._id %>"><%= t.title %></a></h1></td>
     </tr>
     <% }) %>
 </tbody>

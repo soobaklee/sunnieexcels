@@ -1,24 +1,45 @@
 <%- include('../partials/header') %>
 
-<h1><%= title %></h1>
-<br>
-<br>
-<br>
-<main id="tutorial">
- 
- <h4>Posted By: <%= tutorial.postedBy.email%>  on <%= tutorial.createdAt %> </h4>
-<br>
-    <br>
- <%= tutorial.steps[0].content %>
+<h1 class="title"><a href="/tutorials"><%= title %></a></h1>
+<div class="posted-by">
+    Posted By:
+    <%= tutorial.postedBy.email%> on
+    <%= tutorial.createdAt %>
+</div>
+
+<div>
+<form action="/tutorials/<%= tutorial._id %>?_method=DELETE"
+    class="delete-form" method="POST">
+    <button type="submit">Delete Tutorial</button>
+  </form></div>
+  <button><a href="/tutorials/<%= tutorial._id %>/edit">Edit Tutorial</a></button>
 
     <br>
-</p>
-<br>
-<br>
-<br>
-<h2>Feedback (Comments/Questions)</h2>
-<form id="adding-feedback" action="/tutorials/<%= tutorial._id %>/feedback" method="POST">
-
-</form>
-
+    <br>
+    <%= tutorial.steps[0].content %>
+    
 </main>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%if (tutorial.comments.length) { %>
+<div class='comments'>
+    <% tutorial.comments.forEach(function(c) { %>
+        <h3><%= c.content %></h3><br>
+        <h4>posted by: <%= c.postedBy %> on <%= c.createdAt %></h4>
+    <% }); %>
+</div>
+<% } else { %>
+<h3>Be the first to leave a comment!</h3>
+<% } %>
+<br>
+<br>
+<br>
+<h2>Join the party!</h2>
+<form id="adding-comments" action="/tutorials/<%= tutorial._id%>/comments" method="POST">
+    <label>Want to leave a question or a comment?</label><br>
+    <textarea type="text" name="content" cols="70" rows="10"></textarea>
+    <br><input id="input-btn" type="submit" value="Make Comment">
+</form>

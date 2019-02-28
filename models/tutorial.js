@@ -1,12 +1,23 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var User = require('./user');
-var Feedback = require('./feedback');
+
+var commentSchema = new Schema({
+    postedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+    content: String
+}, {
+    timestamps: true,
+})
 
 var stepSchema = new Schema({
     header: String,
     content: String,
     image: String
+}, {
+    timestamps: true
 })
 
 var tutorialSchema = new Schema({
@@ -20,16 +31,7 @@ var tutorialSchema = new Schema({
         ref: 'User',
     },
     steps: [stepSchema],
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Feedback',
-        isQuestion: false,
-    }],
-    questions: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Feedback',
-        isQuestion: true,
-    }]
+    comments: [commentSchema],
 }, {
     timestamps: true,
 });
