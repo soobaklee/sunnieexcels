@@ -1,5 +1,4 @@
 const Tutorial = require('../models/tutorial');
-// const Comment = require('../models/comment');
 const User = require('../models/user');
 
 module.exports = {
@@ -13,7 +12,7 @@ module.exports = {
 }
 
 function index(req, res, next) {
-    Tutorial.find({}, function (err, tutorials) {
+    Tutorial.find({}).populate('postedBy').populate('comments.postedBy').exec(function(err, tutorials) {
         res.render('tutorials/index', {
             title: 'Learn to Excel',
             user: req.user,
@@ -44,10 +43,11 @@ function show(req, res) {
 }
 
 function create(req, res) {
-    console.log("Req inside of tutorial create", req.body)
     var tutorial = new Tutorial(req.body);
-    tutorial.steps.push({ content: req.body.content, image: req.body.image });
-    console.log("POSTEDBY: ", tutorial)
+    const image = {};
+    image.url = req.file.url;
+    image.id = req.file.public_id;
+    tutorial.steps.push({ content: req.body.content, imageUrl: image.url, imageId: image.id });
     tutorial.postedBy = req.user._id;
     tutorial.save(function (err) {
         if (err) return res.redirect('/tutorials/new');
@@ -61,22 +61,27 @@ function mastered(req, res) {
 }
 
 function deleteTutorial(req, res) {
-    Tutorial.findByIdAndRemove(req.params.id, function (err) {
-        res.redirect('/tutorials');
-    });
+    // if (tutorial.postedBy.email === req.user.email) {
+        Tutorial.findByIdAndRemove(req.params.id, function (err) {
+            res.redirect('/tutorials');
+        });
+    // } else {
+    //     res.redirect('/tutorials');
+    // }
 }
 
 function updateTutorial(req, res) {
     Tutorial.findByIdAndUpdate(req.params.id, {
-        content: req.body.content, 
-        image: req.body.image, 
-        title: req.body.title}, {new: true}, function (err, tutorial) {
+        content: req.body.content,
+        image: req.body.image,
+        title: req.body.title
+    }, { new: true }, function (err, tutorial) {
         res.render('tutorials/edit', {
             title: `Edit ${tutorial.title}`,
             postedBy: tutorial.postedBy,
             user: req.user,
             tutorial
         });
-});
+    });
 }
 

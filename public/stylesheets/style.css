@@ -3,10 +3,14 @@ body {
   /* font-family: 'Fredericka the Great', cursive, "Lucida Grande", Helvetica, Arial, sans-serif; */
   font-family: 'Josefin Slab', serif;
   max-width: 1000px;
+  background-color: black;
+  font-size: 25px;
 }
 
 main {
   max-width: 950px;
+  min-height: 600px;
+  background-color: white;
 }
 
 header {
@@ -67,6 +71,16 @@ header > h1 {
   text-decoration: none;
 }
 
+#welcome, #about {
+  text-align: center;
+  justify-content: center;
+}
+
+#about {
+  text-align: center;
+  justify-content: center;
+}
+
 #input-tutorial-title {
   height: 30px;
   width: 500px;
@@ -78,3 +92,56 @@ header > h1 {
   width: 500px;
 }
 
+#tutorial-list {
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 3fr;
+}
+
+#edit {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  justify-content: center;
+}
+
+button {
+  height: 35px;
+  width: 150px;
+  font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Trirong', serif;
+  font-size: 15px;
+  height: 35px;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 0 5px 0;
+}
+
+footer > h3 {
+  margin: 0 auto;
+}
+
+h1 {
+  padding: 30px;
+  font-size: 30px;
+}
+
+h2 {
+  margin: 20px 0 0 0;
+}
+
+div > a {
+  margin: 15px 0 0 0;
+}
+
+div {
+  text-align: center;
+  justify-content: center;
+}

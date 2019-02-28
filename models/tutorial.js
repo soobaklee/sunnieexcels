@@ -7,18 +7,20 @@ var commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    content: String
+    content: String,
+    response: String,
 }, {
-    timestamps: true,
-})
+        timestamps: true,
+    })
 
 var stepSchema = new Schema({
     header: String,
     content: String,
-    image: String
+    imageUrl: String,
+    imageId: String,
 }, {
-    timestamps: true
-})
+        timestamps: true
+    })
 
 var tutorialSchema = new Schema({
     title: String,
@@ -33,7 +35,7 @@ var tutorialSchema = new Schema({
     steps: [stepSchema],
     comments: [commentSchema],
 }, {
-    timestamps: true,
-});
+        timestamps: true,
+    });
 
 module.exports = mongoose.model('Tutorial', tutorialSchema);

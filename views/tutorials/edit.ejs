@@ -1,5 +1,6 @@
-<%- include('./partials/header' %>
+<%- include('../partials/header') %>
 
+<main>
 <h1>Edit Tutorial</h1>
 
 <form action="/tutorials/<%=tutorial._id%>/edit?_method=PUT" method="PUT" autocomplete="off">
@@ -10,3 +11,7 @@
     <input id="input-btn" type="submit" value="Edit Tutorial">
 
 </form>
+
+</main>
+
+<%- include('../partials/footer') %>
