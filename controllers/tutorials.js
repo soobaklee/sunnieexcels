@@ -95,6 +95,7 @@ function updateTutorial(req, res) {
             user: req.user,
             tutorial
         });
+        // res.redirect(`/tutorials/${tutorial._id}`);
     });
 }
 
