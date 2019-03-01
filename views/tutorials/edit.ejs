@@ -4,7 +4,7 @@
 <h1>Edit Tutorial</h1>
 
 <form id="edit-box" action="/tutorials/<%=tutorial._id%>?_method=PUT" method="POST" autocomplete="off">
-    <input type="text" name="title" value="<%= title %>"><br>
+    <input type="text" name="title" value="<%= title %>"><br><br>
     <% tutorial.steps.forEach(function(s) { %>
         <textarea type="text" name="content" placeholder="<%= s.content %>"></textarea>
     <br>
