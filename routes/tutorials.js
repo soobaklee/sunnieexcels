@@ -23,7 +23,7 @@ router.get('/:id', tutorialsCtrl.show);
 router.post('/', isLoggedIn, parser.single('image'), tutorialsCtrl.create);
 router.delete('/:id', isLoggedIn, tutorialsCtrl.delete);
 router.get('/:id/edit', isLoggedIn, tutorialsCtrl.edit);
-router.put('/:id/edit', isLoggedIn, tutorialsCtrl.update);
+router.put('/:id', isLoggedIn, tutorialsCtrl.update);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())return next();

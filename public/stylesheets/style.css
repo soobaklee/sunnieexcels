@@ -175,16 +175,15 @@ h1 {
 }
 
 h2 {
+  font-size: 25px;
   margin: 0 0 0 0;
+  text-decoration: underline;
 }
 
 div > a {
   margin: 15px 0 0 0;
   text-align: center;
   justify-content: center;
-}
-
-div {
 }
 
 img {
@@ -228,4 +227,26 @@ p{
 h6 {
   font-weight: normal;
   margin: 0 auto;
+}
+
+.comments {
+  text-align: center;
+  margin: auto;
+  width: 70%;
+}
+
+#edit-box > textarea {
+  height: 300px;
+  width: 700px;
+  font-size: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+#edit-box > input {
+  height: 50px;
+  width: 700px;
+  font-size: 30px;
+  text-align: center;
+  justify-content: center;
 }

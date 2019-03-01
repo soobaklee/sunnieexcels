@@ -3,22 +3,17 @@
     <div>
         <h1 class="title"><a href="/tutorials">
                 <%= title %></a></h1>
-        <br>
     </div>
     <div class="posted-by">
         Posted By:
         <%= tutorial.postedBy.name%> on
         <%= tutorial.createdAt.toDateString() %>
     </div>
-
-
-    <br>
     <br>
     <% tutorial.steps.forEach(function(s) { %>
     <img src="<%= s.imageUrl %>" alt="">
     <br><br>
     <%= s.content %>
-    <br>
     <% }); %>
     <br>
     <% if (user === undefined) {
@@ -29,18 +24,12 @@
         <button type="submit">Delete Tutorial</button>
     </form>
     <% } else { %>
-        <% } %>
-        <br>
-        <h2>Join the party!</h2>
-        <form id="adding-comments" action="/tutorials/<%= tutorial._id%>/comments" method="POST">
-            <label>Want to leave a question or a comment?</label><br>
-            <textarea type="text" name="content" cols="70" rows="3"></textarea>
-            <br><button id="input-btn" type="submit">Comment</button>
-        </form>
+    <% } %>
     <br>
     <%if (tutorial.comments.length) { %>
-    <div class='comments'>
-        <% tutorial.comments.forEach(function(c) { %>
+        <div class='comments'>
+    <h2>Comments and Questions:</h2>
+    <% tutorial.comments.forEach(function(c) { %>
         <p>
             <%= c.content %>
         </p>
@@ -48,10 +37,17 @@
             <%= c.postedBy.name %> on
             <%= c.createdAt.toLocaleString() %>
         </h6>
-        <% }); %>
     </div>
+    <% }); %>
     <% } %>
-  
+
+    <br>
+    <h2>Join the party!</h2>
+    <form id="adding-comments" action="/tutorials/<%= tutorial._id%>/comments" method="POST">
+        <label>Want to leave a question or a comment?</label><br>
+        <textarea type="text" name="content" cols="70" rows="3"></textarea>
+        <br><button id="input-btn" type="submit">Comment</button>
+    </form>
     <br>
 </main>
 <%- include('../partials/footer') %>

@@ -89,8 +89,8 @@ function updateTutorial(req, res) {
         image: req.body.image,
         title: req.body.title
     }, { new: true }, function (err, tutorial) {
-        res.render('tutorials/edit', {
-            title: `Edit ${tutorial.title}`,
+        res.render(`tutorials/edit`, {
+            title: `${tutorial.title}`,
             postedBy: tutorial.postedBy,
             user: req.user,
             tutorial
