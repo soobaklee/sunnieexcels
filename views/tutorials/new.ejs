@@ -1,15 +1,13 @@
 <%- include('../partials/header') %>
 <main>
-<h1>Create a New Tutorial</h1>
-<h3>When creating a tutorial, don't forget you were once a tadpole yourself!</h3>
+<h1 class="title">Create a New Tutorial</h1>
+<h3>When creating a tutorial, don't forget you were once a <a href="https://i.pinimg.com/originals/2a/aa/dc/2aaadc1d97aeeebb41006b507df27f3f.jpg" target=_blank>tadpole</a> yourself!</h3>
 <form id="create-tutorial" action="/tutorials" method="POST" enctype="multipart/form-data">
     <input id="input-tutorial-title" type="text" name="title" placeholder="Give your tutorial a title, here." autocomplete="off"><br><br>
     <textarea class="tutorial-text-box" name="content" cols="100" rows="15" placeholder="Tutorial content goes here." autocomplete="off"></textarea><br>
-    <input type="file" name="image" >
-    <br><input id="input-btn" type="submit" value="Create Tutorial">
+    <button><input id="button" type="file" name="image"></button>
+    <br><button id="input-btn" type="submit">Create Tutorial</button>
 </form>
-
-<p>enctype="multipart/form-data"</p>
 
 </main>
 

@@ -4,10 +4,15 @@
 <h1>Edit Tutorial</h1>
 
 <form action="/tutorials/<%=tutorial._id%>/edit?_method=PUT" method="PUT" autocomplete="off">
-    <input type="text" name="title" value="<%= tutorial.title %>">
-    <textarea type="text" name="content" value="<%= tutorial.content %>"></textarea>
-    <input type="file" name="image" value="<%= tutorial.image %>">
+    <input type="text" name="title" value="<%= title %>"><br>
+    <% tutorial.steps.forEach(function(s) { %>
+        <textarea type="text" name="content" placeholder="<%= s.content %>"></textarea>
     <br>
+    <input type="file" name="image">
+    <%= s.imageId %>
+    <% }); %>
+    <br>
+
     <input id="input-btn" type="submit" value="Edit Tutorial">
 
 </form>

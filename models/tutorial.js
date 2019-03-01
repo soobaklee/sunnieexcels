@@ -14,7 +14,6 @@ var commentSchema = new Schema({
     })
 
 var stepSchema = new Schema({
-    header: String,
     content: String,
     imageUrl: String,
     imageId: String,

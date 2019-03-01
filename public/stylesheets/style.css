@@ -1,27 +1,39 @@
 body {
   margin: 0 auto;
-  /* font-family: 'Fredericka the Great', cursive, "Lucida Grande", Helvetica, Arial, sans-serif; */
-  font-family: 'Josefin Slab', serif;
+  font-family:  'Didact Gothic', sans-serif, 'Catamaran', sans-serif, 'Monoton', cursive, Arial, sans-serif;
   max-width: 1000px;
   background-color: black;
   font-size: 25px;
 }
 
 main {
-  max-width: 950px;
   min-height: 600px;
   background-color: white;
+  justify-content: center;
+  text-align: center;
+  color: black;
+}
+
+main > h3 > a {
+  color: black;
 }
 
 header {
   background-color: black;
   text-align: center;
   justify-content: center;
-  font-family: 'Trirong', serif;
+  font-family: 'Catamaran', sans-serif;
 }
 
 header > h1 {
- font-size: 40px;
+  font-size: 40px;
+  padding: 30px 0 0 0;
+  font-family: 'Monoton', cursive;
+}
+
+h1 > a {
+  text-decoration: none;
+  color: white;
 }
 
 nav {
@@ -32,43 +44,59 @@ nav {
 }
 
 nav > ul {
-  padding-left: 0;
+  padding: 0;
   justify-content: center;
   text-align: center;
   margin: 0;
+  list-style-type: none;
 }
 
 li > a {
   color: white;
   text-decoration: none;
-  padding: 10px;
+  padding: 0 0 0 10px;
   font-weight: bold;
+  font-size: 18px;
 }
 
 li {
   float: left;
   background-color: black;
-  padding: 10px;
+  padding: 5px 15px 0px 15px;
 }
 
 li > a:hover {
-  color: greenyellow;
+  color: rgb(121, 202, 0);
 }
 
 header > h1 {
-  color: white;
   border: 0px;
   margin: 0px;
   text-align: center;
 }
 
+#welcome > h1 {
+  margin: 20px 0 0 0;
+  font-size: 70px;
+  padding-top: 80px;
+  text-align: center;
+}
+
+#welcome > h3 {
+  margin: 0 auto;
+  font-size: 25px;
+  max-width: 800px;
+}
+
 .title {
-  font-size: 30px;
+  font-size: 40px;
   text-decoration: none;
+  color: black;
+  padding-bottom: 0px;
 }
 
 .title > a {
-  text-decoration: none;
+  color: black;
 }
 
 #welcome, #about {
@@ -76,15 +104,24 @@ header > h1 {
   justify-content: center;
 }
 
-#about {
-  text-align: center;
-  justify-content: center;
+#about h1 {
+  font-size: 40px;
+  padding-top: 60px;
+  margin: 20px 0 0 0;
+  font-family: 'Catamaran', sans-serif;
+}
+
+#about > h3 {
+  font-size: 25px;
+  /* padding: 5px; */
+  font-family: 'Didact Gothic', sans-serif;
 }
 
 #input-tutorial-title {
   height: 30px;
-  width: 500px;
+  width: 820px;
   font-size: 20px;
+  text-align: center;
 }
 
 #create-tutorial-box {
@@ -92,9 +129,13 @@ header > h1 {
   width: 500px;
 }
 
-#tutorial-list {
-  display: grid;
-  grid-template-columns: 1fr, 1fr, 3fr;
+:placeholder-shown {
+justify-content: center;
+text-align: center;
+}
+
+label {
+  font-size: 20px;
 }
 
 #edit {
@@ -106,8 +147,8 @@ header > h1 {
 
 button {
   height: 35px;
-  width: 150px;
-  font-family: 'Josefin Slab', serif;
+  width: 200px;
+  font-family: 'Didact Gothic', sans-serif;
   font-size: 20px;
 }
 
@@ -134,14 +175,57 @@ h1 {
 }
 
 h2 {
-  margin: 20px 0 0 0;
+  margin: 0 0 0 0;
 }
 
 div > a {
   margin: 15px 0 0 0;
+  text-align: center;
+  justify-content: center;
 }
 
 div {
-  text-align: center;
+}
+
+img {
+  height: 400px;
+  width: 800px;
   justify-content: center;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+h3 > a {
+  color: white;
+}
+
+a:hover {
+  color: green;
+}
+
+#tutorial-list {
+  justify-content: center;
+  align-items: center;
+  table-layout: auto;
+  width: 100%;
+}
+
+td {
+  justify-content: center;
+}
+
+.posted-by {
+  font-size: 20px;
+}
+
+p{
+  margin: 0 auto;
+}
+
+h6 {
+  font-weight: normal;
+  margin: 0 auto;
 }

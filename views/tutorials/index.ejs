@@ -1,25 +1,29 @@
 <%- include('../partials/header') %>
 <main>
-<h1>Excel Tutorials</h1>
-<br><br>
-<table id="tutorial-list">
-<thead>
-    <tr>
-        <th>Posted</th>
-        <th>Author</th>
-        <th>Tutorial</th>
-    </tr>
-</thead>
-<tbody>
-    <% tutorials.forEach(function(t) { %>
-    <tr>
-        <td><%= t.createdAt.toDateString() %></td>
-        <td><%= t.postedBy.name %></td>
-        <td><a class="title" href="/tutorials/<%= t._id %>"><%= t.title %></a></td>
-    </tr>
-    <% }) %>
-</tbody>
-</table>
+    <h1 class="title">Excel Tutorials</h1>
+
+    <table id="tutorial-list">
+        <thead>
+            <tr>
+                <th>Posted</th>
+                <th>Author</th>
+                <th>Tutorial</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tutorials.forEach(function(t) { %>
+            <tr>
+                <td>
+                    <%= t.createdAt.toDateString() %>
+                </td>
+                <td>
+                    <%= t.postedBy.name %>
+                </td>
+                <td><a class="title" href="/tutorials/<%= t._id %>">
+                        <%= t.title %></a></td>
+                    <% }) %>
+        </tbody>
+    </table>
 
 </main>
 <%- include('../partials/footer') %>

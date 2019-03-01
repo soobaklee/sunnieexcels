@@ -23,41 +23,35 @@
     <br>
     <% if (user === undefined) {
 
-    } else { 
-        if (tutorial.postedBy.email === user.email) { %>
+    } else if (tutorial.postedBy.email === user.email) { %>
     <button><a id="edit" href="/tutorials/<%= tutorial._id %>/edit">Edit Tutorial</a></button>
-    <% } else { %>
-    <% } %>
-    <% if (tutorial.postedBy.email === user.email) { %>
     <form action="/tutorials/<%= tutorial._id %>?_method=DELETE" class="delete-form" method="POST">
         <button type="submit">Delete Tutorial</button>
     </form>
     <% } else { %>
-    <% } %>
-    <br>
+        <% } %>
+        <br>
+        <h2>Join the party!</h2>
+        <form id="adding-comments" action="/tutorials/<%= tutorial._id%>/comments" method="POST">
+            <label>Want to leave a question or a comment?</label><br>
+            <textarea type="text" name="content" cols="70" rows="3"></textarea>
+            <br><button id="input-btn" type="submit">Comment</button>
+        </form>
     <br>
     <%if (tutorial.comments.length) { %>
     <div class='comments'>
         <% tutorial.comments.forEach(function(c) { %>
         <p>
             <%= c.content %>
-        </p><br>
-        <p>posted by:
-            <%= c.postedBy %> on
-            <%= c.createdAt.toDateString() %>
         </p>
+        <h6>posted by:
+            <%= c.postedBy.name %> on
+            <%= c.createdAt.toLocaleString() %>
+        </h6>
         <% }); %>
     </div>
     <% } %>
+  
     <br>
-    <br>
-    <br>
-    <h2>Join the party!</h2>
-    <form id="adding-comments" action="/tutorials/<%= tutorial._id%>/comments" method="POST">
-        <label>Want to leave a question or a comment?</label><br>
-        <textarea type="text" name="content" cols="70" rows="3"></textarea>
-        <br><input id="input-btn" type="submit" value="Make Comment">
-    </form>
-<% } %>
 </main>
 <%- include('../partials/footer') %>

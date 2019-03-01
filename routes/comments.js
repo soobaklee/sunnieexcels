@@ -4,6 +4,7 @@ var commentsCtrl = require('../controllers/comments');
 
 
 router.post('/tutorials/:id/comments', isLoggedIn, commentsCtrl.create);
+// router.delete('/tutorials:id/comments', isLoggedIn, commentsCtrl.delete);
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
@@ -11,9 +12,3 @@ function isLoggedIn(req, res, next) {
 }
 
 module.exports = router; 
-
-// router.get('/tutorials/:id', commentsCtrl.new);
-// router.post('/tutorials', isLoggedIn, commentsCtrl.create);
-// router.post('/tutorials/:id', isLoggedIn, commentsCtrl.addComment);
-
-

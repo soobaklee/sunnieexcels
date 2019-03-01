@@ -7,12 +7,13 @@ module.exports = {
     show,
     create,
     mastered,
+    edit,
     delete: deleteTutorial,
     update: updateTutorial,
 }
 
 function index(req, res, next) {
-    Tutorial.find({}).populate('postedBy').populate('comments.postedBy').exec(function(err, tutorials) {
+    Tutorial.find({}).populate('postedBy').populate('comments.postedBy').exec(function (err, tutorials) {
         res.render('tutorials/index', {
             title: 'Learn to Excel',
             user: req.user,
@@ -30,7 +31,7 @@ function newTutorial(req, res) {
 
 function show(req, res) {
     Tutorial.findById(req.params.id)
-        .populate('postedBy')
+        .populate('postedBy').populate('comments.postedBy')
         .exec(function (err, tutorial) {
             res.render('tutorials/show', {
                 title: `${tutorial.title}`,
@@ -61,14 +62,26 @@ function mastered(req, res) {
 }
 
 function deleteTutorial(req, res) {
-    // if (tutorial.postedBy.email === req.user.email) {
-        Tutorial.findByIdAndRemove(req.params.id, function (err) {
-            res.redirect('/tutorials');
-        });
-    // } else {
-    //     res.redirect('/tutorials');
-    // }
+    Tutorial.findByIdAndRemove(req.params.id, function (err) {
+        res.redirect('/tutorials');
+    });
 }
+
+function edit(req, res) {
+    Tutorial.findById(req.params.id)
+        .populate('postedBy')
+        .exec(function (err, tutorial) {
+            console.log(tutorial)
+            res.render('tutorials/edit', {
+                title: `${tutorial.title}`,
+                postedBy: tutorial.postedBy,
+                user: req.user,
+                tutorial,
+            });
+        });
+
+}
+
 
 function updateTutorial(req, res) {
     Tutorial.findByIdAndUpdate(req.params.id, {
