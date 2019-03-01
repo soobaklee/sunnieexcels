@@ -20,12 +20,13 @@ I first began to use Excel seriously at my first corporate job and since then ha
 
 **__Link to sunniExcels__**:
 https://sunniexcels.herokuapp.com/
+[Trello Board](https://trello.com/invite/b/mFMG4k1H/31641997b9796d07662e2f14e0e51a24/wdi-p2-yummie-sunnie)
 
 ## Navigating sunniExcels
-[Imgur](https://i.imgur.com/WlVxTgn.png)
+![Imgur](https://i.imgur.com/WlVxTgn.png)
 
 ## Tutorial Page
-[Imgur](https://i.imgur.com/EzRrIry.png)
+![Imgur](https://i.imgur.com/EzRrIry.png)
 
 
 
