@@ -17,13 +17,14 @@ https://sunniexcels.herokuapp.com/
 ![Imgur](https://i.imgur.com/EzRrIry.png)
 
 ## Technology Used
-HTML | CSS | JAVASCRIPT | TRELLO | GITHUB | NODE.JS | MONGODB | MONGOOSE | EXPRESS | HEROKU | EXCEL | IMGUR | CLOUDINARY
+HTML | CSS | JAVASCRIPT | EJS | TRELLO | GITHUB | NODE.JS | MONGODB | MONGOOSE | EXPRESS | HEROKU | EXCEL | IMGUR | CLOUDINARY
 
 ## ICE BOX
 
 Oh, so many!
-Divide comments between actual comments and questions
-Query comments and have these questions emailed to the tutorial poster
+1. Divide comments between actual comments and questions
+2. Query comments and have these questions emailed to the tutorial poster
+3. Implement search for tutorials
 
 
 
